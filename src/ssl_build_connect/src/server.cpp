@@ -55,8 +55,7 @@ vector<string> getCertChain() {
 */
 bool requestCallback(ssl_build_connect::record::Request &req, ssl_build_connect::record::Response &res) {
     if(req.tag == TAG_HELLO) {
-        ROS_INFO("服务器接收到 hello 消息");
-
+        ROS_INFO("服务器接收到 hello 消息: tag: %d data: %s", req.tag, req.data.c_str());
         ROS_INFO("服务器确认加密协议，并返回证书链");
         res.tag = TAG_HELLO;
         res.data = "RSA_DH_MD5";
@@ -64,22 +63,31 @@ bool requestCallback(ssl_build_connect::record::Request &req, ssl_build_connect:
         for(string cert : certs) {
             res.cert.push_back(cert);
         }
+        ROS_INFO("服务器接发送 hello 消息: tag: %d data: %s", res.tag, res.data.c_str());
     }
     else if(req.tag == TAG_KEY) {
-        ROS_INFO("服务器接收到 key 消息");
+        ROS_INFO("服务器接收到 key 消息: tag: %d data: %s", req.tag, string_to_hex(req.data).c_str());
         keyAgree->setOtherKey(req.data);
 
-        ROS_INFO("服务器返回公钥");
+        ROS_INFO("服务器获取公钥");
+        res.tag = TAG_KEY;
         res.data = keyAgree->getPublicKey();
 
+        ROS_INFO("服务器接发送 key 消息: tag: %d data: %s", res.tag,string_to_hex(res.data).c_str());
+
         shared_key = keyAgree->getShareKey();
-        cout << shared_key.length() << endl;
-        string shared_key_hex = string_to_hex(shared_key);
-        ROS_INFO("服务器生成对称加密密钥(转为十六进制)：%s",shared_key_hex.c_str());
+        ROS_INFO("服务器生成对称加密密钥: %s",string_to_hex(shared_key).c_str());
     }
     else if(req.tag == TAG_FINISH) {
+        ROS_INFO("服务器收到 finish 消息: tag: %d data: %s", req.tag, string_to_hex(req.data).c_str());
         string word = decrypt_AES(req.data, shared_key);
         ROS_INFO("解密数据：%s 长度为：%d",word.c_str(),(int)word.length());
+
+        string returnWord = "hello client!";
+        res.tag = TAG_FINISH;
+        res.data = encrypt_AES(returnWord, shared_key);
+        ROS_INFO("数据：%s 长度为：%d",returnWord.c_str(),(int)returnWord.length());
+        ROS_INFO("服务器发送 finish 消息: tag: %d data: %s", res.tag, string_to_hex(res.data).c_str());
     }
     else {
 

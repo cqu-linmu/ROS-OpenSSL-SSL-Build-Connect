@@ -46,8 +46,9 @@ bool tagHello() {
     srv.request.tag = TAG_HELLO;
     srv.request.data = "DH_MD5";
 
-    ROS_INFO("客户端发送 hello 消息");
+    ROS_INFO("客户端发送 hello 消息: tag: %d data: %s", srv.request.tag, string_to_hex(srv.request.data).c_str());
     serClient->call(srv);
+    ROS_INFO("客户端接收 hello 消息: tag: %d data: %s", srv.response.tag, string_to_hex(srv.response.data).c_str());
     ROS_INFO("客户端正在验证服务器证书链");
 
     // 使用 cert 保存服务器证书
@@ -91,26 +92,28 @@ bool tagKey() {
     srv.request.tag = TAG_KEY;
     srv.request.data = keyAgree.getPublicKey();
 
-    ROS_INFO("客户端发送 key 消息");
+    ROS_INFO("客户端发送 key 消息: tag: %d data: %s", srv.request.tag, string_to_hex(srv.request.data).c_str());
     serClient->call(srv);
+    ROS_INFO("客户端接收 key 消息: tag: %d data: %s", srv.response.tag, string_to_hex(srv.response.data).c_str());
     keyAgree.setOtherKey(srv.response.data);
     shared_key = keyAgree.getShareKey();
-    cout << shared_key.length() << endl;
-    string shared_key_hex = string_to_hex(shared_key);
-    ROS_INFO("客户端生成对称加密密钥(转为十六进制)：%s",shared_key_hex.c_str());
+    ROS_INFO("客户端生成对称加密密钥(转为十六进制): %s",string_to_hex(shared_key).c_str());
     return true;
 }
 bool tagFinish() {
     //初始化请求数据
     ssl_build_connect::record srv;
 
-    srv.request.tag = TAG_FINISH;
-    string word = "hello world!";
-    ROS_INFO("解密数据：%s 长度为：%d",word.c_str(),(int)word.length());
+    string word = "hello server!";
+    ROS_INFO("数据：%s 长度为：%d",word.c_str(),(int)word.length());
     string str = encrypt_AES(word,shared_key);
+    srv.request.tag = TAG_FINISH;
     srv.request.data = str;
 
-    ROS_INFO("客户端发送 key 消息");
+    ROS_INFO("客户端发送 finish 消息: tag: %d data: %s", srv.request.tag, string_to_hex(srv.request.data).c_str());
     serClient->call(srv);
+    ROS_INFO("客户端接收 finish 消息: tag: %d data: %s", srv.response.tag, string_to_hex(srv.response.data).c_str());
+    string returnWord = decrypt_AES(srv.response.data, shared_key);
+    ROS_INFO("解密数据：%s 长度为：%d",returnWord.c_str(),(int)returnWord.length());
     return true;
 }
