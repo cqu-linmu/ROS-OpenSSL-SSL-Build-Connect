@@ -1,0 +1,74 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 1 (0x1)
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=CN, ST=ChongQing, O=CQU, OU=agent CA, CN=CQU agent CA
+        Validity
+            Not Before: Mar 27 09:41:47 2023 GMT
+            Not After : Mar 26 09:41:47 2024 GMT
+        Subject: C=CN, ST=ChongQing, O=CQU, OU=CQU IT seriver, CN=CQU_seriver
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                RSA Public-Key: (2048 bit)
+                Modulus:
+                    00:de:5c:47:a8:0e:c5:e5:73:f3:78:06:87:1b:38:
+                    03:25:8f:03:37:ae:c8:e4:ef:66:5e:ac:24:9b:e6:
+                    aa:b5:74:4d:a5:10:8f:6e:38:5d:eb:79:2a:d5:8b:
+                    ed:52:3f:fe:fa:e9:ff:1e:ad:2a:d4:ee:66:3c:ca:
+                    0a:b3:24:01:d4:86:de:9a:ca:9d:a5:c4:59:18:87:
+                    d6:18:5e:48:20:23:bc:5a:90:cb:8c:f8:63:85:95:
+                    d7:3d:7d:3f:ad:5f:43:cd:ef:96:54:18:e9:ed:c0:
+                    d9:b2:c0:89:5c:58:ce:5a:70:69:34:34:0a:5c:af:
+                    45:cd:58:9b:87:a8:d5:14:12:9b:28:a9:8b:8d:78:
+                    05:0b:b7:eb:9b:40:d3:37:a4:97:1f:18:63:df:52:
+                    2f:2e:f0:b5:6a:9c:b5:43:a5:50:16:bf:8c:c3:e6:
+                    72:f8:c5:c3:61:db:ed:c9:a3:3c:d9:e6:24:75:13:
+                    ce:6f:64:ac:0c:2b:36:67:0d:72:bf:66:b1:90:95:
+                    4c:70:2f:a8:5c:dd:de:2a:09:82:17:07:75:20:20:
+                    db:1d:26:2b:1a:28:0b:a9:e2:b3:f1:b5:66:e9:fc:
+                    4c:83:83:9b:36:25:6e:19:e1:77:86:e5:45:28:a3:
+                    5d:5a:28:bc:e4:f9:86:2b:e5:b2:3e:42:20:0e:03:
+                    fb:07
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            X509v3 Subject Alternative Name: 
+                DNS:cqu.edu.cn
+    Signature Algorithm: sha256WithRSAEncryption
+         0d:37:64:d5:38:36:01:bc:64:98:fa:f5:c7:ba:b1:9c:01:73:
+         71:ae:07:05:c2:0d:01:5f:58:de:37:43:d4:43:f4:9d:75:96:
+         3e:65:e7:a4:4e:e8:55:9b:ad:65:0b:8d:e6:9c:c9:27:c6:0a:
+         ea:82:71:89:37:9e:7a:3e:8c:34:39:07:c5:05:cd:03:5c:27:
+         e2:48:e9:26:7d:d5:59:4e:b3:75:7a:a8:95:d8:c7:d0:ee:9c:
+         4c:cd:db:4f:e0:d4:13:03:9c:d1:94:23:0d:3e:30:ba:aa:1a:
+         ad:2d:ad:b4:34:f8:ad:14:e3:ca:60:fe:1f:a3:a0:be:83:0e:
+         31:3a:ee:5c:9f:86:59:7f:b9:aa:6c:ed:80:56:03:f7:b3:4e:
+         06:9d:89:67:4f:7e:72:55:0f:36:22:4e:1a:17:25:0c:70:3b:
+         88:ea:f8:00:17:64:05:3f:95:b0:d8:c8:23:25:81:7a:b5:a2:
+         6d:b7:93:03:33:25:51:84:61:28:fa:f5:48:3d:dd:53:c2:c7:
+         a4:bf:78:a5:a7:a5:f6:b1:24:1f:69:c3:06:f2:bc:38:e8:d3:
+         4e:e8:30:06:38:d6:fe:d9:0c:65:a3:fb:c7:bd:fe:5e:15:6e:
+         88:86:0d:a8:af:85:4a:6c:ca:b1:90:ea:44:dd:c5:59:40:85:
+         30:d4:a6:72
+-----BEGIN CERTIFICATE-----
+MIIDVjCCAj6gAwIBAgIBATANBgkqhkiG9w0BAQsFADBZMQswCQYDVQQGEwJDTjES
+MBAGA1UECAwJQ2hvbmdRaW5nMQwwCgYDVQQKDANDUVUxETAPBgNVBAsMCGFnZW50
+IENBMRUwEwYDVQQDDAxDUVUgYWdlbnQgQ0EwHhcNMjMwMzI3MDk0MTQ3WhcNMjQw
+MzI2MDk0MTQ3WjBeMQswCQYDVQQGEwJDTjESMBAGA1UECAwJQ2hvbmdRaW5nMQww
+CgYDVQQKDANDUVUxFzAVBgNVBAsMDkNRVSBJVCBzZXJpdmVyMRQwEgYDVQQDDAtD
+UVVfc2VyaXZlcjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAN5cR6gO
+xeVz83gGhxs4AyWPAzeuyOTvZl6sJJvmqrV0TaUQj244Xet5KtWL7VI//vrp/x6t
+KtTuZjzKCrMkAdSG3prKnaXEWRiH1hheSCAjvFqQy4z4Y4WV1z19P61fQ83vllQY
+6e3A2bLAiVxYzlpwaTQ0ClyvRc1Ym4eo1RQSmyipi414BQu365tA0zeklx8YY99S
+Ly7wtWqctUOlUBa/jMPmcvjFw2Hb7cmjPNnmJHUTzm9krAwrNmcNcr9msZCVTHAv
+qFzd3ioJghcHdSAg2x0mKxooC6nis/G1Zun8TIODmzYlbhnhd4blRSijXVoovOT5
+hivlsj5CIA4D+wcCAwEAAaMkMCIwCQYDVR0TBAIwADAVBgNVHREEDjAMggpjcXUu
+ZWR1LmNuMA0GCSqGSIb3DQEBCwUAA4IBAQANN2TVODYBvGSY+vXHurGcAXNxrgcF
+wg0BX1jeN0PUQ/SddZY+ZeekTuhVm61lC43mnMknxgrqgnGJN556Pow0OQfFBc0D
+XCfiSOkmfdVZTrN1eqiV2MfQ7pxMzdtP4NQTA5zRlCMNPjC6qhqtLa20NPitFOPK
+YP4fo6C+gw4xOu5cn4ZZf7mqbO2AVgP3s04GnYlnT35yVQ82Ik4aFyUMcDuI6vgA
+F2QFP5Ww2MgjJYF6taJtt5MDMyVRhGEo+vVIPd1Twsekv3ilp6X2sSQfacMG8rw4
+6NNO6DAGONb+2Qxlo/vHvf5eFW6Ihg2or4VKbMqxkOpE3cVZQIUw1KZy
+-----END CERTIFICATE-----

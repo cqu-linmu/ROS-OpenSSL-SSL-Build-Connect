@@ -1,0 +1,62 @@
+[ ca ]
+default_ca	= CA_default
+ 
+[ CA_default ]
+dir		    = /home/linmu/catkin_test/src/ssl_build_connect/ca_dir/root/
+certs		= $dir/certs
+crl_dir		= $dir/crl
+database	= $dir/index.txt
+new_certs_dir	= $dir/newcerts
+certificate	= $dir/key/root.crt
+serial		= $dir/serial
+crlnumber	= $dir/crlnumber
+crl		    = $dir/crl.pem
+private_key	= $dir/key/root_private.pem
+RANDFILE	= $dir/key/.rand
+unique_subject	= no
+ 
+x509_extensions	= usr_cert
+copy_extensions = copy
+ 
+name_opt 	= ca_default
+cert_opt 	= ca_default
+ 
+default_days	= 365
+default_crl_days= 30
+default_md	= sha256
+preserve	= no
+policy		= policy_ca
+ 
+[ policy_ca ]
+countryName		= supplied
+stateOrProvinceName	= supplied
+organizationName	= supplied
+organizationalUnitName	= supplied
+commonName		= supplied
+emailAddress		= optional
+ 
+[ req ]
+default_bits		= 2048
+default_keyfile 	= privkey.pem
+distinguished_name	= req_distinguished_name
+attributes		= req_attributes
+x509_extensions	= v3_ca
+string_mask = utf8only
+utf8 = yes
+prompt                  = no
+ 
+[ req_distinguished_name ]
+countryName			= CN
+stateOrProvinceName		= ChongQing
+localityName			= ChongQing
+organizationName        = CQU
+organizationalUnitName	= Root CA
+commonName			= CQU Root CA
+ 
+[ usr_cert ]
+basicConstraints = CA:TRUE
+ 
+[ v3_ca ]
+basicConstraints = CA:TRUE
+ 
+[ req_attributes ]
